@@ -1,15 +1,14 @@
-version: 0.2
+version: 0.1
 
 phases:
-  install:
-    runtime-versions:
-      java: corretto8
   build:
     commands:
       - echo Build started on `date`
-      - chmod +x mvnw
-      - ./mvnw package 
+      - mvn test
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package
 artifacts:
   files:
-    - target/CustomerStatement-0.0.1-SNAPSHOT.jar
-  discard-paths: yes
+    - target//CustomerStatement-0.0.1-SNAPSHOT.jar
